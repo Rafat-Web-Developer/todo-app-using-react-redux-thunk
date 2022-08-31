@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Todo from "./Todo";
 
-export default function TodoList() {
+export default function TodoList({ status }) {
   const todos = useSelector((state) => state.todos);
   const filters = useSelector((state) => state.filters);
 
@@ -27,14 +27,21 @@ export default function TodoList() {
     return true;
   };
 
+  const completedTodos = todos.filter((todo) => todo.completed === true);
+  const incompleteTodos = todos.filter((todo) => todo.completed === false);
+  console.log(completedTodos);
+
   return (
     <div className='mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto'>
-      {todos
-        .filter(filterByStatus)
-        .filter(filterByColors)
-        .map((todo) => (
-          <Todo todo={todo} key={todo.id} />
-        ))}
+      {status === "completed"
+        ? completedTodos
+            .filter(filterByStatus)
+            .filter(filterByColors)
+            .map((todo) => <Todo todo={todo} key={todo.id} />)
+        : incompleteTodos
+            .filter(filterByStatus)
+            .filter(filterByColors)
+            .map((todo) => <Todo todo={todo} key={todo.id} />)}
     </div>
   );
 }

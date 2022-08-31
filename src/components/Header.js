@@ -5,7 +5,7 @@ import noteImage from "../assets/images/notes.png";
 import plusImage from "../assets/images/plus.png";
 import { added, allCompleted, clearCompleted } from "../redux/todos/actions";
 
-export default function Header() {
+export default function Header({ status }) {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
@@ -29,6 +29,11 @@ export default function Header() {
 
   return (
     <div>
+      <h1 className='pb-4 text-center font-bold text-violet-600'>
+        {status === "completed"
+          ? "Completed Todo List"
+          : "Incomplete Todo List"}
+      </h1>
       <form
         className='flex items-center bg-gray-100 px-4 py-4 rounded-md'
         onSubmit={submitHandler}>
