@@ -1,5 +1,7 @@
 import {
   ADDED,
+  EDIT,
+  UPDATE,
   ALLCOMPLETED,
   CLEARCOMPLETED,
   COLORSELECTED,
@@ -11,6 +13,23 @@ export const added = (todoText) => {
   return {
     type: ADDED,
     payload: todoText,
+  };
+};
+
+export const edit = (todoId) => {
+  return {
+    type: EDIT,
+    payload: todoId,
+  };
+};
+
+export const update = (todoId, text) => {
+  return {
+    type: UPDATE,
+    payload: {
+      id: todoId,
+      text: text
+    },
   };
 };
 

@@ -1,5 +1,7 @@
 import {
   ADDED,
+  EDIT,
+  UPDATE,
   ALLCOMPLETED,
   CLEARCOMPLETED,
   COLORSELECTED,
@@ -24,6 +26,31 @@ const reducer = (state = initialState, action) => {
           completed: false,
         },
       ];
+
+    case EDIT:
+      return state.map((todo) => {
+        if (todo.id !== action.payload) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          edit: true
+        };
+      });
+
+    case UPDATE:
+      return state.map((todo) => {
+        if (todo.id !== action.payload.id) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          text: action.payload.text,
+          edit: false
+        };
+      });
 
     case TOGGLED:
       return state.map((todo) => {
