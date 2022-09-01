@@ -68,9 +68,11 @@ export default function Footer() {
           }`}
           onClick={() => handleColorChange("red")}></li>
         <li
+        
           className={`h-3 w-3 border-2 border-yellow-500 md:hover:bg-yellow-500 rounded-full cursor-pointer ${
             colors.includes("yellow") && "bg-yellow-500"
           }`}
+
           onClick={() => handleColorChange("yellow")}></li>
       </ul>
     </div>
