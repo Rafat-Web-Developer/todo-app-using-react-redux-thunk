@@ -1,3 +1,4 @@
+export const LOADED = "todos/loaded";
 export const ADDED = "todos/added";
 export const EDIT = "todos/edit";
 export const UPDATE = "todos/update";

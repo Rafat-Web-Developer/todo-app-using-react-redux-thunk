@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
-import {
-  colorSelected,
-  deleted,
-  toggled,
-  edit,
-  update,
-} from "../redux/todos/actions";
+import { edit, update } from "../redux/todos/actions";
 import noteImage from "../assets/images/notes.png";
+import deleteTodo from "../redux/todos/thunk/deleteTodo";
+import updateStatus from "../redux/todos/thunk/updateStatus";
+import updateColor from "../redux/todos/thunk/updateColor";
 
 export default function Todo({ todo }) {
   const dispatch = useDispatch();
@@ -17,15 +14,15 @@ export default function Todo({ todo }) {
   const [editText, setEditText] = useState(text);
 
   const handleStatusChange = (todoId) => {
-    dispatch(toggled(todoId));
+    dispatch(updateStatus(todoId, completed));
   };
 
   const handleColorChange = (todoId, color) => {
-    dispatch(colorSelected(todoId, color));
+    dispatch(updateColor(todoId, color));
   };
 
   const handleDelete = (todoId) => {
-    dispatch(deleted(todoId));
+    dispatch(deleteTodo(todoId));
   };
 
   const handleEdit = (todoId) => {

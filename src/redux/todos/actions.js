@@ -7,7 +7,15 @@ import {
   COLORSELECTED,
   DELETED,
   TOGGLED,
+  LOADED,
 } from "./actionTypes";
+
+export const loaded = (todos) => {
+  return {
+    type: LOADED,
+    payload: todos,
+  };
+};
 
 export const added = (todoText) => {
   return {
@@ -28,7 +36,7 @@ export const update = (todoId, text) => {
     type: UPDATE,
     payload: {
       id: todoId,
-      text: text
+      text: text,
     },
   };
 };
