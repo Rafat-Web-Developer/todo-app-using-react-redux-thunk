@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
-import { edit, update } from "../redux/todos/actions";
+import { edit } from "../redux/todos/actions";
 import noteImage from "../assets/images/notes.png";
 import deleteTodo from "../redux/todos/thunk/deleteTodo";
 import updateStatus from "../redux/todos/thunk/updateStatus";
 import updateColor from "../redux/todos/thunk/updateColor";
+import updateText from "../redux/todos/thunk/updateText";
 
 export default function Todo({ todo }) {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export default function Todo({ todo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(update(id, editText));
+    dispatch(updateText(id, editText));
   };
 
   return (
