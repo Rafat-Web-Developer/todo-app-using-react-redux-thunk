@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { colorChanged, statusChanged } from "../redux/filters/actions";
+// import { colorChanged, statusChanged } from "../redux/filters/actions";
+import { colorChanged } from "../redux/filters/actions";
 
 const numberOfTodos = (no_of_todos) => {
   switch (no_of_todos) {
@@ -18,11 +19,12 @@ export default function Footer() {
 
   const dispatch = useDispatch();
   const todosRemaining = todos.filter((todo) => !todo.completed).length;
-  const { status, colors } = filters;
+  // const { status, colors } = filters;
+  const { colors } = filters;
 
-  const handleStatusChange = (status) => {
-    dispatch(statusChanged(status));
-  };
+  // const handleStatusChange = (status) => {
+  //   dispatch(statusChanged(status));
+  // };
 
   const handleColorChange = (color) => {
     if (colors.includes(color)) {
@@ -36,7 +38,7 @@ export default function Footer() {
     <div className='mt-4 flex justify-between text-xs text-gray-500'>
       <p>{numberOfTodos(todosRemaining)} left</p>
       <ul className='flex space-x-1 items-center text-xs'>
-        <li
+        {/* <li
           className={`cursor-pointer ${status === "All" && "font-bold"}`}
           onClick={() => handleStatusChange("All")}>
           All
@@ -52,7 +54,7 @@ export default function Footer() {
           className={`cursor-pointer ${status === "Complete" && "font-bold"}`}
           onClick={() => handleStatusChange("Complete")}>
           Complete
-        </li>
+        </li> */}
         <li></li>
         <li></li>
         <li

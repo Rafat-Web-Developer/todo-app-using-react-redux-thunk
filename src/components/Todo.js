@@ -81,32 +81,37 @@ export default function Todo({ todo }) {
           {text}
         </div>
       )}
-      <div>
-        <img
-          src={noteImage}
-          className='w-4 h-4 cursor-pointer'
-          alt='Add todo'
-          onClick={() => handleEdit(id)}
-        />
-      </div>
 
-      <div
-        className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-green-500 border-green-500 ${
-          color === "green" && "bg-green-500"
-        }`}
-        onClick={() => handleColorChange(id, "green")}></div>
+      {!completed && (
+        <>
+          <div>
+            <img
+              src={noteImage}
+              className='w-4 h-4 cursor-pointer'
+              alt='Add todo'
+              onClick={() => handleEdit(id)}
+            />
+          </div>
 
-      <div
-        className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-yellow-500 border-yellow-500 ${
-          color === "yellow" && "bg-yellow-500"
-        }`}
-        onClick={() => handleColorChange(id, "yellow")}></div>
+          <div
+            className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-green-500 border-green-500 ${
+              color === "green" && "bg-green-500"
+            }`}
+            onClick={() => handleColorChange(id, "green")}></div>
 
-      <div
-        className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-red-500 border-red-500 ${
-          color === "red" && "bg-red-500"
-        }`}
-        onClick={() => handleColorChange(id, "red")}></div>
+          <div
+            className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-yellow-500 border-yellow-500 ${
+              color === "yellow" && "bg-yellow-500"
+            }`}
+            onClick={() => handleColorChange(id, "yellow")}></div>
+
+          <div
+            className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-red-500 border-red-500 ${
+              color === "red" && "bg-red-500"
+            }`}
+            onClick={() => handleColorChange(id, "red")}></div>
+        </>
+      )}
 
       <img
         src={cancelImage}

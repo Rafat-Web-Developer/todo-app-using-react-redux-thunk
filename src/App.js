@@ -6,8 +6,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className='bg-blue-100 p-5'>
-        <TodoApp status='completed' />
         <TodoApp status='incomplete' />
+        <TodoApp status='completed' />
       </div>
     </Provider>
   );

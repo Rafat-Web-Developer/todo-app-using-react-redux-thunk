@@ -33,11 +33,18 @@ export default function TodoList({ status }) {
 
   return (
     <div className='mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto'>
+      {status === "incomplete" && incompleteTodos.length === 0 && (
+        <h1 className='text-center font-bold text-red-500'>
+          There are no incomplete Todos Here
+        </h1>
+      )}
+      {status === "completed" && completedTodos.length === 0 && (
+        <h1 className='text-center font-bold text-red-500'>
+          There are no completed Todos Here
+        </h1>
+      )}
       {status === "completed"
-        ? completedTodos
-            .filter(filterByStatus)
-            .filter(filterByColors)
-            .map((todo) => <Todo todo={todo} key={todo.id} />)
+        ? completedTodos.map((todo) => <Todo todo={todo} key={todo.id} />)
         : incompleteTodos
             .filter(filterByStatus)
             .filter(filterByColors)

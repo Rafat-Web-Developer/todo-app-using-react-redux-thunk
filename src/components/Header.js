@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import tickImage from "../assets/images/double-tick.png";
 import noteImage from "../assets/images/notes.png";
 import plusImage from "../assets/images/plus.png";
-import { added, allCompleted, clearCompleted } from "../redux/todos/actions";
+// import { added, allCompleted, clearCompleted } from "../redux/todos/actions";
+import { added, allCompleted } from "../redux/todos/actions";
 
 export default function Header({ status }) {
   const dispatch = useDispatch();
@@ -23,17 +24,12 @@ export default function Header({ status }) {
     dispatch(allCompleted());
   };
 
-  const clearHeandler = () => {
-    dispatch(clearCompleted());
-  };
+  // const clearHeandler = () => {
+  //   dispatch(clearCompleted());
+  // };
 
   return (
     <div>
-      <h1 className='pb-4 text-center font-bold text-violet-600'>
-        {status === "completed"
-          ? "Completed Todo List"
-          : "Incomplete Todo List"}
-      </h1>
       <form
         className='flex items-center bg-gray-100 px-4 py-4 rounded-md'
         onSubmit={submitHandler}>
@@ -55,9 +51,9 @@ export default function Header({ status }) {
           <img className='w-4 h-4' src={tickImage} alt='Complete' />
           <span>Complete All Tasks</span>
         </li>
-        <li className='cursor-pointer' onClick={clearHeandler}>
+        {/* <li className='cursor-pointer' onClick={clearHeandler}>
           Clear completed
-        </li>
+        </li> */}
       </ul>
     </div>
   );
